@@ -1,0 +1,13 @@
+Angular prvides two strategies for Building Forms.
+
+1. Template-driven Forms
+   - Simpler 
+   - Logic is in the template using directives like ngModel.. etc.
+   - Best for simple forms 
+   - Angular automatically creates form object behind the scenes.
+
+2. Reactive Forms(model-driven) -ReactiveFormsModule
+   
+   - More powerful,scalable and testable
+   - logic is in the component not template
+   - manually create FormControl,FormGroup etc

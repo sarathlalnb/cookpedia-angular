@@ -29,18 +29,19 @@
         <h1>Popular Recipe of the Week</h1>
         <div class="d-flex justify-content-between">
             <p>Our Most popular recipes of the week</p>
-            <a routerLink="/all-recipes">View All</a>
+            <a routerLink="/allRecipes">View All</a>
         </div>
         <div class=" row my-3">
                 <!-- each recipe card -->
-                <div class="col-lg-4">
-                    <div class="p-3">
-                        <img class="card-img-top" src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=556,505" alt="">
-                        <div class="card-body">
-                            <h5 class="card-title">Recipe Name</h5>
-                        </div>
-                    </div>
-                </div>
+                 @for (recipe of recipeArray; track $index) { <div class="col-lg-4">
+                  <div class="p-3">
+                      <img class="card-img-top" src={{recipe.image}} alt="">
+                      <div class="card-body">
+                          <h5 class="card-title">{{recipe.name}}</h5>
+                      </div>
+                  </div>
+              </div>}
+               
             
         </div>
      </div>

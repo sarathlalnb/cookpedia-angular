@@ -49,18 +49,29 @@
       <div class="">
         <ul style="list-style: none">
           <li class="nav-item dropdown text-light">
-            <a
+            <button
               class="nav-link dropdown-toggle"
-              href="#"
+
               role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <i class="fa-solid fa-user"></i>
-            </a>
+              @if (isLoggedIn) {
+                <span class="me-2">Hi, {{loggedInUserName}}</span>
+              }
+                <i class="fa-solid fa-user"></i>
+          
+            
+            </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" routerLink="/login">Login</a></li>
-              <li><a class="dropdown-item" routerLink="/register">Register</a></li>
+              @if (isLoggedIn) {
+                <li><a class="dropdown-item" routerLink="/profile">Profile</a></li>
+              <li><a class="dropdown-item" routerLink="/savedRecipes">Saved Recipes</a></li>
+              <li><button class="btn">Logout <i class="fa-solid fa-right-from-bracket"></i></button></li>
+          
+              }@else { <li><a class="dropdown-item" routerLink="/login">Login</a></li>
+              <li><a class="dropdown-item" routerLink="/register">Register</a></li>}
+             
             </ul>
           </li>
         </ul>

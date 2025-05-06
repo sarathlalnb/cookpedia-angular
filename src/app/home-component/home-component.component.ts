@@ -1,12 +1,28 @@
-import { Component } from '@angular/core';
-import { HeaderComponent } from "../header/header.component";
+import { Component, OnInit } from '@angular/core';
+import { HeaderComponent } from '../header/header.component';
+import { ApiService } from '../services/api.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home-component',
-  imports: [HeaderComponent],
+  imports: [HeaderComponent,RouterLink],
   templateUrl: './home-component.component.html',
-  styleUrl: './home-component.component.css'
+  styleUrl: './home-component.component.css',
 })
-export class HomeComponentComponent {
+export class HomeComponentComponent implements OnInit {
+  recipeArray: any = [];
 
+  // di
+  constructor(private api: ApiService) {}
+
+  ngOnInit(): void {
+    this.getRecipes();
+  }
+
+  getRecipes() {
+    this.api.getAllRecipe().subscribe((res: any) => {
+      this.recipeArray = res.slice(0,6);
+      console.log(this.recipeArray);
+    });
+  }
 }
