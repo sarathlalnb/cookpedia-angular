@@ -11,6 +11,13 @@ import { ProfileComponentComponent } from './profile-component/profile-component
 import { PnfComponent } from './pnf/pnf.component';
 
 export const routes: Routes = [
+
+  // lazy load admin module
+
+  {
+    path:'admin',loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule)
+  },
+
   {
     path: '',
     component: HomeComponentComponent,

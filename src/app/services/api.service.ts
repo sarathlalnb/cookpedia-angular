@@ -1,28 +1,84 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { retry } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
-  server_url = "http://localhost:3000"
-// DI
-  constructor(private http : HttpClient) { }
+  server_url = 'http://localhost:3000';
 
-   getAllRecipe(){
-   return this.http.get(`${this.server_url}/get-allRecipes`)
-  } 
+  // DI
+  constructor(private http: HttpClient) {}
 
-  addTestimonyApi(reqBody:any){
-    return this.http.post(`${this.server_url}/add-testimony`,reqBody)
+  getAllRecipe() {
+    return this.http.get(`${this.server_url}/get-allRecipes`);
   }
 
-  registerUser(reqBody:any){
-    return this.http.post(`${this.server_url}/register`,reqBody)
+  addTestimonyApi(reqBody: any) {
+    return this.http.post(`${this.server_url}/add-testimony`, reqBody);
   }
 
-  loginUser(reqBody:any){
-    return this.http.post(`${this.server_url}/login`,reqBody)
+  registerUser(reqBody: any) {
+    return this.http.post(`${this.server_url}/register`, reqBody);
   }
 
+  loginUser(reqBody: any) {
+    return this.http.post(`${this.server_url}/login`, reqBody);
+  }
+
+  // append token in request header
+  appendToken() {
+    // create a new variable with httpHeader features
+    let headers = new HttpHeaders();
+    let token = sessionStorage.getItem('token');
+    if (token) {
+      headers = headers.append('Authorization', `Bearer ${token}`);
+    }
+    return { headers };
+  }
+
+  getSingleRecipe(recipeId: string) {
+    return this.http.get(
+      `${this.server_url}/SingleRecipe/${recipeId}/view`,
+      this.appendToken()
+    );
+  }
+
+  getRelatedRecipe(cuisine: any) {
+    return this.http.get(
+      `${this.server_url}/related-recipes?cuisine=${cuisine}`,
+      this.appendToken()
+    );
+  }
+
+  downloadRecipeApi(recipeId: string, downloadRecipe: any) {
+    return this.http.post(
+      `${this.server_url}/recipe/${recipeId}/download`,
+      downloadRecipe,
+      this.appendToken()
+    );
+  }
+
+  saveRecipeApi(recipeId: string, savedContent: any) {
+    return this.http.post(
+      `${this.server_url}/recipe/${recipeId}/save`,
+      savedContent,
+      this.appendToken()
+    );
+  }
+
+  getSavedRecipes() {
+    return this.http.get(
+      `${this.server_url}/saved-recipes`,
+      this.appendToken()
+    );
+  }
+
+  deleteSavedRecipe(id: string) {
+    return this.http.delete(
+      `${this.server_url}/delete/${id}/Recipe`,
+      this.appendToken()
+    );
+  }
 }

@@ -11,3 +11,15 @@ Angular prvides two strategies for Building Forms.
    - More powerful,scalable and testable
    - logic is in the component not template
    - manually create FormControl,FormGroup etc
+
+
+
+- Module :- are used to group components, not standalone components they are part of Modules.
+            we can Lazy load modules in application.
+
+   Lazy loading in angular:- Loading the components of webpages whenever it requires.It is used to reduce initial webpage loading time.
+
+   - to create a module in ANGULAR with routing features :- ng g m moduleName --routing 
+          - we will get routing.module.ts - used to setup paths/route of the component inside the module
+
+          - we will get module.ts - Used to import common packages needed for components inside the module.

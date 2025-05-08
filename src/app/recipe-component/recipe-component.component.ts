@@ -4,6 +4,7 @@ import { ApiService } from '../services/api.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SearchPipe } from '../pipes/search.pipe';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-component',
@@ -22,10 +23,19 @@ export class RecipeComponentComponent {
   searchKey: string = '';
 
   // di
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService,private router : Router) {}
 
   ngOnInit() {
     this.getRecipes();
+  }
+
+  viewRecipe(recipeId:any){
+    let token = sessionStorage.getItem('token')
+    if(token){
+this.router.navigateByUrl(`viewRecipe/${recipeId}`)
+    }else{
+      alert("Please login to view recipe")
+    }
   }
 
   getRecipes() {
