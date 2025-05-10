@@ -1,1 +1,102 @@
-<p>recipe-add works!</p>
+    <div class="row container-fluid">
+        <div class="col-2 p-0">
+            <app-sidebar></app-sidebar>
+        </div>
+        <div class="col-10">
+          
+            <h1 class="text-center my-3">Add Recipe Details</h1>
+           
+            <div class="container my-5 border rounded text-center p-5 shadow w-75">
+                
+                    <img width="100px" height="100px" class="mb-2" src="" alt="no Image">
+                
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-2">
+                            <input placeholder="Recipe Name" type="text" class="form-control">
+                        </div>
+                        <div class="mb-2">
+                            <input placeholder="Recipe Preparation time in Minutes" type="text" class="form-control">
+                        </div>
+                        <div class="mb-2">
+                            <input placeholder="Recipe Image URL" type="text" class="form-control">
+                        </div>
+                        <div class="mb-2">
+                            <label for="cuisine">Choose Cuisine type</label>
+                            <select  name="cuisine" id="cuisine" class="form-control">
+                                <option selected hidden disabled>Choose Cuisine type</option>
+                              
+                                    <option value="cuisine">cuisine</option>
+                                
+                            </select>
+                        </div>
+                        <div class="mb-2">
+                            <div class="d-flex align-items-center mb-2">
+                                <textarea  class="form-control" placeholder="Add Recipe Ingredients"></textarea>
+                                <button class="btn btn-primary ms-1">+</button>
+                            </div>
+                           
+                                <div class="d-flex align-items-center mb-2">
+                                    <input value="item"  class="form-control" placeholder="Recipe Ingredients">
+                                    <button  class="btn  ms-1"><i class="fa-solid fa-trash text-danger"></i></button>
+                                </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-2">
+                            <input  placeholder="Recipe Servings (ex: 4 )" type="text" class="form-control">
+                        </div>
+                        <div class="mb-2">
+                            <input   placeholder="Recipe Cooking time in Minutes" type="text" class="form-control">
+                        </div>
+                        <div class="mb-2">
+                            <input  placeholder="Recipe Calorie Per Servings (ex: 350)" type="text" class="form-control">
+                        </div>
+                        <div class="mb-2">
+                            <label for="difficulty">Choose Mode of Cooking</label>
+                            <select  name="cuisine" id="difficulty" class="form-control">
+                                <option selected hidden disabled>Choose Mode of Cooking</option>
+                                <option value="Easy">Easy</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Hard">Hard</option>
+                            </select>
+                        </div>
+                        <div class="mb-2">
+                            <div class="d-flex align-items-center mb-2">
+                                <textarea #instructionInput class="form-control" placeholder="Cooking Instructions"></textarea>
+                                <button   class="btn btn-primary ms-1">+</button>
+                            </div>
+                           
+                                <div class="d-flex align-items-center mb-2">
+                                    <input    class="form-control" placeholder="Recipe Instrcution">
+                                    <button  class="btn  ms-1"><i class="fa-solid fa-trash text-danger"></i></button>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="border rounded p-2">
+                     
+                               
+                                    <span class="m-1 border rounded p-1"> item </span>
+                           
+                      
+                        <div class="d-flex flex-wrap my-1">
+                                <div class="border rounded p-1 m-2">
+                                    <label > 
+                                        <input  type="checkbox" name="meal" id="meal">
+                                        meal
+                                    </label>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+             
+                    <button class="btn btn-success">Add Recipe</button>
+                
+            </div>
+        </div>
+    </div>

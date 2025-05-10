@@ -11,12 +11,14 @@ import { RouterLink } from '@angular/router';
 })
 export class HomeComponentComponent implements OnInit {
   recipeArray: any = [];
+  testmonyArray:any = []
 
   // di
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {
     this.getRecipes();
+    this.getTestimony()
   }
 
   getRecipes() {
@@ -24,5 +26,11 @@ export class HomeComponentComponent implements OnInit {
       this.recipeArray = res.slice(0,6);
       console.log(this.recipeArray);
     });
+  }
+
+  getTestimony(){
+    this.api.getApprovedTestimony().subscribe((res)=>{
+        this.testmonyArray = res
+    })
   }
 }

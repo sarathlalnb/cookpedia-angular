@@ -1,1 +1,48 @@
-<p>feedback-list works!</p>
+<div class="row container-fluid">
+  <div class="col-2 p-0">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="col-10">
+    <h1>User list</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Username</th>
+          <th scope="col">Email</th>
+          <th scope="col">Feedback</th>
+          <th scope="col">Action / Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of feedBackList; track $index) {
+        <tr>
+          <th scope="row">{{ $index + 1 }}</th>
+          <td>{{ item.name }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.message }}</td>
+          @if (item.status=="pending") {
+          <td>
+            <button (click)="updateFeedBack(item._id,'Approved')"  class="btn btn-success m-1">
+              <i class="fa-solid fa-check text-light"></i>
+            </button>
+            <button (click)="updateFeedBack(item._id,'Rejected')" class="btn btn-warning">
+              <i class="fa-solid fa-xmark text-danger"></i>
+            </button>
+          </td>
+
+          }@else { @if (item.status=="Approved") {
+          <td>
+            <button class="btn btn-success">Approved</button>
+          </td>
+          }@else if (item.status=="Rejected") {
+          <td>
+            <button  class="btn btn-danger">Rejected</button>
+          </td>
+          } }
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

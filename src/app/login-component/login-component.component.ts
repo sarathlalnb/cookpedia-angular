@@ -45,6 +45,7 @@ export class LoginComponentComponent {
           if (res.user.userType == 'User') {
             this.router.navigateByUrl('/');
           } else {
+            this.router.navigateByUrl('/admin')
             // admin panel
           }
         },

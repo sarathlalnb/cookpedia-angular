@@ -8,6 +8,8 @@ import { UserListComponent } from './user-list/user-list.component';
 import { DownloadListComponent } from './download-list/download-list.component';
 import { FeedbackListComponent } from './feedback-list/feedback-list.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { RecipeAddComponent } from './recipe-add/recipe-add.component';
+import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     UserListComponent,
     DownloadListComponent,
     FeedbackListComponent,
-    SidebarComponent
+    SidebarComponent,
+    RecipeAddComponent,
+    RecipeEditComponent
   ],
   imports: [
     CommonModule,

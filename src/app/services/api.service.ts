@@ -81,4 +81,24 @@ export class ApiService {
       this.appendToken()
     );
   }
+
+  getAllUsers(){
+    return this.http.get(`${this.server_url}/userlist`,this.appendToken())
+  } 
+
+  getAllDownloads(){
+    return this.http.get(`${this.server_url}/downloadList`,this.appendToken())
+  }
+
+  getFeedBacks(){
+    return this.http.get(`${this.server_url}/getFeedbacks`,this.appendToken())
+  }
+
+  updateStatusofFeedback(id:string,reqBody:any){
+    return this.http.patch(`${this.server_url}/testimony/${id}/update`,reqBody,this.appendToken())
+  }
+
+  getApprovedTestimony(){
+    return this.http.get(`${this.server_url}/approvedTestimony`)
+  }
 }

@@ -1,1 +1,27 @@
-<p>user-list works!</p>
+
+    <div class="row container-fluid">
+        <div class="col-2 p-0">
+            <app-sidebar></app-sidebar>
+        </div>
+        <div class="col-10">
+          <h1>User list</h1>
+         <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of userList; track $index) {  <tr>
+      <th scope="row">{{$index+1}}</th>
+      <td>{{item.userName}}</td>
+      <td>{{item.email}}</td>
+    </tr>}
+  
+   
+  </tbody>
+</table>
+        </div>
+</div>

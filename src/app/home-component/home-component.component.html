@@ -75,12 +75,14 @@
        <div class="text-center my-5">
         <h1>Client Testimonials</h1>
         <marquee >
+
             <div class="d-flex my-5">
+              @for (item of testmonyArray; track $index) { <div class="rounded border text-center  p-5 me-2">
+                        <h5>{{item.name}}</h5>
+                        <p style="white-space: normal; width: 100%; text-align: justify;" >{{item.message}}</p>
+                    </div>}
                 <!-- testimony -->
-                    <div class="rounded border w-100 p-3 me-2">
-                        <h5>NAme</h5>
-                        <p style="white-space: normal; width: 100%; text-align: justify;" >Review</p>
-                    </div>
+                   
             </div>
         </marquee>
        </div>
