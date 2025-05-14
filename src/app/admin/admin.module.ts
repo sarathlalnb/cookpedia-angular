@@ -10,8 +10,12 @@ import { FeedbackListComponent } from './feedback-list/feedback-list.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RecipeAddComponent } from './recipe-add/recipe-add.component';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
-
-
+import { SearchPipe } from '../pipes/search.pipe';
+import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {HighchartsChartModule} from 'highcharts-angular';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -21,11 +25,17 @@ import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
     FeedbackListComponent,
     SidebarComponent,
     RecipeAddComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
-  ]
+    AdminRoutingModule,
+    SearchPipe,
+    FormsModule,
+    MatCardModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    HighchartsChartModule
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}

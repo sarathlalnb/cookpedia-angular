@@ -41,7 +41,7 @@ const routes: Routes = [
   },
   {
     path: 'recipe/:id/edit',
-    component: RecipeEditComponent,
+    component: RecipeAddComponent,
     title: 'edit-recipe',
   },
 ];

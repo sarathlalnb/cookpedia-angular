@@ -9,13 +9,16 @@ import { ViewRecipeComponentComponent } from './view-recipe-component/view-recip
 import { SavedREcipeComponentComponent } from './saved-recipe-component/saved-recipe-component.component';
 import { ProfileComponentComponent } from './profile-component/profile-component.component';
 import { PnfComponent } from './pnf/pnf.component';
+import { authGaurdGuard } from './guards/auth-gaurd.guard';
 
 export const routes: Routes = [
-
   // lazy load admin module
 
   {
-    path:'admin',loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule)
+    path: 'admin',
+    canActivate:[authGaurdGuard],
+    loadChildren: () =>
+      import('./admin/admin.module').then((m) => m.AdminModule),
   },
 
   {
@@ -50,16 +53,19 @@ export const routes: Routes = [
   },
   {
     path: 'viewRecipe/:id',
+    canActivate:[authGaurdGuard],
     component: ViewRecipeComponentComponent,
     title: 'viewRecipe',
   },
   {
     path: 'savedRecipes',
+    canActivate:[authGaurdGuard],
     component: SavedREcipeComponentComponent,
     title: 'savedRecipe',
   },
   {
     path: 'profile',
+    canActivate:[authGaurdGuard],
     component: ProfileComponentComponent,
     title: 'Profile',
   },

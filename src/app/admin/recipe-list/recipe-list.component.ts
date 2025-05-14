@@ -9,6 +9,7 @@ import { ApiService } from '../../services/api.service';
 })
 export class RecipeListComponent {
 
+  searchKey:string=""
    recipeArray :any =[]
 
   constructor(private api:ApiService){}
@@ -20,6 +21,13 @@ export class RecipeListComponent {
   getRecipes(){
     this.api.getAllRecipe().subscribe((res)=>{
       this.recipeArray = res
+    })
+  }
+
+  deleteRecipe(id:string){
+    this.api.deleteRecipe(id).subscribe((res)=>{
+      alert("Succesffully deleted")
+      this.getRecipes()
     })
   }
 

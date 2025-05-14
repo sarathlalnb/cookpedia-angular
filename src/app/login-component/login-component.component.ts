@@ -18,6 +18,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponentComponent {
   loginForm: FormGroup;
+  downloadArray:any=[]
+  chartData:any=[]
 
   constructor(
     private api: ApiService,
@@ -40,6 +42,7 @@ export class LoginComponentComponent {
         next: (res: any) => {
           sessionStorage.setItem('token', res.token);
           sessionStorage.setItem('user', JSON.stringify(res.user));
+          this.getDownloadCount()
           this.loginForm.reset();
           console.log(res);
           if (res.user.userType == 'User') {
@@ -51,10 +54,25 @@ export class LoginComponentComponent {
         },
         error: (err: any) => {
           alert(err.error);
+          console.log(err)
         },
       });
     } else {
       alert('Invalid Form');
     }
+  }
+    getDownloadCount() {
+    this.api.getAllDownloads().subscribe((res) => {
+      this.downloadArray = res;
+      this.downloadArray.filter((eachDownload:any)=>{
+     let name = eachDownload.recipeCuisine
+     let y = eachDownload.count
+
+     let obj = {name,y}
+     this.chartData.push(obj)
+     
+    })
+     localStorage.setItem('chartData', JSON.stringify(this.chartData));
+    });
   }
 }

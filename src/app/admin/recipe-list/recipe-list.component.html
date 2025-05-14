@@ -1,43 +1,49 @@
-
-    <div class="row container-fluid">
-        <div class="col-2 p-0">
-            <app-sidebar></app-sidebar>
-        </div>
-        <div class="col-10">
-          <h1 class="text-center mt-3">All Recipe list</h1>
-          <div class="d-flex justify-content-between">
-            <button class="btn btn-primary">
-                + Add New Recipe
+<div class="row container-fluid">
+  <div class="col-2 p-0">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="col-10">
+    <h1 class="text-center mt-3">All Recipe list</h1>
+    <div class="d-flex justify-content-between">
+      <button routerLink="/admin/recipe/add" class="btn btn-primary">
+        + Add New Recipe
+      </button>
+      <input
+        [(ngModel)]="searchKey"
+        type="text"
+        class="w-25 rounded"
+        placeholder="Search Recipe By their Names!!"
+      />
+    </div>
+    <table class="table mt-4">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Image</th>
+          <th scope="col">Cuisine</th>
+          <th scope="col">...</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of recipeArray | search:searchKey; track $index) {
+        <tr>
+          <th scope="row">{{ $index + 1 }}</th>
+          <td>{{ item.name }}</td>
+          <td><img height="100px" src="{{ item.image }}" alt="" /></td>
+          <td>{{ item.cuisine }}</td>
+          <td>
+            <button routerLink="/admin/recipe/{{ item._id }}/edit" class="btn">
+              <i class="fa-solid fa-pen-to-square text-primary fs-3"></i>
             </button>
-            <input type="text" class="w-25 rounded" placeholder="Search Recipe By their Names!!">
-          </div>
-         <table class="table mt-4">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Image</th>
-      <th scope="col">Cuisine</th>
-      <th scope="col">...</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (item of recipeArray; track $index) {
-         <tr>
-      <th scope="row">{{$index+1}}</th>
-      <td>{{item.name}}</td>
-      <td><img height="100px" src={{item.image}} alt=""></td>
-            <td>{{item.cuisine}}</td>
-            <td>
-                <button class="btn"><i class="fa-solid fa-pen-to-square text-primary fs-3"></i></button>
-                <button class="btn"><i class="fa-solid fa-trash text-danger fs-3"></i></button>
-            </td>
-    </tr>
-  
-    }
-    
-   
-  </tbody>
-</table>
-        </div>
+            <button (click)="deleteRecipe(item._id)" class="btn">
+              <i class="fa-solid fa-trash text-danger fs-3"></i>
+            </button>
+          </td>
+        </tr>
+
+        }
+      </tbody>
+    </table>
+  </div>
 </div>

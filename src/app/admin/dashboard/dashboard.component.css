@@ -1,0 +1,23 @@
+.card{
+  height: 120px;
+  justify-content: center;
+  width: 200px;
+  text-align: center;
+}
+.card1{
+    background-color: rgb(48, 48, 176);
+    color: wheat;
+}
+
+.card2{
+    background-color: rgb(15, 136, 167);
+    color: wheat;
+}
+.card3{
+    background-color: rgb(17, 11, 56);
+    color: wheat;
+}
+.card4{
+    background-color: rgb(94, 76, 212);
+    color: wheat;
+}
